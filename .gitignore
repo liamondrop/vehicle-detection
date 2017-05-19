@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+vehicles*
+non-vehicles*
+non_vehicles*
