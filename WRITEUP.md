@@ -1,6 +1,6 @@
 # **Vehicle Detection and Tracking**
 
-The goal of this project is to build an object detector that detects and tracks cars in a video stream. A car is essentially a box with some other common characteristics like windshields, wheels, lights, etc. I take advantage of a feature descriptor called a Histogram of Oriented Gradients (HOG)[1], which is a handy way of simplifying and extracting useful features from an image, and combine it with a machine learning classifier, specifically the Multi-layer Perceptron Classifier[2], in order to identify and track vehicles in a video stream.
+The goal of this project is to build an object detector that detects and tracks cars in a video stream. I take advantage of a feature descriptor called a Histogram of Oriented Gradients (HOG)[1], which is a handy way of simplifying and extracting useful features from an image, and combine it with a machine learning classifier, specifically the Multi-layer Perceptron Classifier[2], in order to identify and track vehicles in a video stream.
 
 ## Histogram of Oriented Gradients (HOG)
 
