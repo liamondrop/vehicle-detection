@@ -14,13 +14,20 @@ Pictured to the right of the car images are 3 visualizations of HOG descriptors 
 
 ![HOG features color spaces](./output_images/hog_features_color_spaces.png)
 
-The above images visualize the HOG descriptor as applied to the 3 channels of a car image in both the HSV and YUV color spaces. In this case, we can distinguish clear differences between each of the image channels, meaning we can potentially extract more useful information for identifying and classifying vehicles. While this is great news, we won't know for sure which of the color spaces gives the most useful information for classification until we test them empirically. However, even by simply eyeing the two sets of HOG images above, the YUV color space appears to yield 3 channels that are each distinct from the other, whereas the HOG images taken from the HSV channels appear to be rather similar for the second and third (S and V) channels.
+The above images visualize the HOG descriptor as applied to the 3 channels of a car image in both the HSV and YUV color spaces. In this case, we can distinguish clear differences between each of the image channels, meaning we can potentially extract more useful information for identifying and classifying vehicles! While this is great news, we won't know for sure which of the color spaces gives the most useful information for classification until we actually test them empirically. However, even by simply eyeing the two sets of HOG images above, the YUV color space appears to yield 3 channels that are each distinct from the other, whereas the HOG images taken from the HSV channels appear to be rather similar for the second and third (S and V) channels. And indeed, after some experimentation, the YUV space does appear to give the best results for accurate classification, at least where the HOG descriptor is concerned.
 
-### Scaling the features
+### Dataset
+
+For this project, I used a dataset labeled with vehicle and non-vehicle examples to train my classifier. These images come from a combination of the [GTI vehicle image database](http://www.gti.ssr.upm.es/data/Vehicle_database.html) and the [KITTI vision benchmark suite](http://www.cvlibs.net/datasets/kitti/).
+
+### Preparing the Data
 
 Many machine learning classifiers behave badly if the individual features do not more or less look like standard normally distributed data (e.g. Gaussian with 0 mean and unit variance). For this reason, I centered and scaled by feature data using Scikit-Learn's Standard Scaler[5].
 
 ![Feature Scaling](./output_images/feature_scaling.png)
+
+Apart from that and converting the images to YUV, no other massaging of the data was needed to yield good results with this project.
+
 
 ### Training a Machine Learning Classifier
 
