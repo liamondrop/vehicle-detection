@@ -114,13 +114,23 @@ Videos are sequences of images, typically with 30 image frames per second, where
 
 OpenCV offers a convenience method `cv2.findContours()` that finds the bounding contours of individual shapes in an image. Applying this to the heatmap, we can quickly find the outer contours of the "hot" zones int he image. Once these are determined, OpenCV has a second method `cv2.boundingRect()` that will draw a minimal bounding box around a contour. The code for this procedure is found among the helper functions found in cell 5 of the project notebook.
 
+### Exploiting the Time Dimension
+
+Videos are sequences of images, typically with 30 image frames per second, where each frame is highly similar to the frame immediately preceding it. It is possible to extend the idea of an ensemble of votes cast by the classifier from 2 dimensions (X and Y) to 3 (time). That is, by adding up the heatmaps across some number frames, we can obtain an even more stable set of predictions. Python has a `deque` data structure, which means a "double ended queue". By specifiying the `maxlen` property at instantiation, each time an item is pushed onto the resulting buffer, only the most recent items up to `maxlen` will be kept and any others discarded. This creates a rolling temporal window in addition to the 2-dimensional sliding windows. With some trial and error, I determined that I could get good, relatively smooth results by summing the heatmaps taken from the last 10 frames (i.e. 1/3 of a second) and discarding any part of the result with fewer than 15 votes.
+
 ## Output Videos
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/asPh859OMDo" frameborder="0" allowfullscreen></iframe>
+The video output for this project can be found [here](./output_videos/project_video_process.mp4). I also saved a [diagnostic video](./output_videos/project_video_diagnostic.mp4) with the heatmaps overlaid on the video frames for visualization purposes.
 
-### Considerations for Future Improvements
+## Considerations for Future Improvements
 
+### Speed
 
+The speed of processing the vehicle detection across frames would need to be improved to run this detector in real time. Currently it runs at about 6 frames per second. The search windows are the same for each frame, so there is no need to repeatedly recalculate their positions. Rather, I believe a significant performance improvement could be made by vectorizing the search window slicing and running the detector on the full set of sliced images in one shot, rather than sequentially.
+
+### Dynamic Detection zones
+
+The search area in the videos is static. This doesn't translate well from one video to the next, as various factors like the field of view and pose of the camera will affect where in the frame the cars will be located. It might be useful in a real world detector to dynamically track the horizon line to ensure that the search windows are only considering relevant zones of the image.
 
 ## References
 
