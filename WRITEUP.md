@@ -29,7 +29,7 @@ Many machine learning classifiers behave badly if the individual features do not
 Apart from that and converting the images to YUV, no other massaging of the data was needed to yield good results with this project.
 
 
-### Training a Machine Learning Classifier
+## Training a Machine Learning Classifier
 
 I selected 3 different classifiers to test for this project: the Linear Support Vector Classifier[1], the K Nearest Neighbors Classifier[2], and the Multi-layer Perceptron mentioned above. By applying each of these to various permutations of the HOG parameters (described below), I determined that the K Nearest Neighbors classifier was not nearly as good a performer for this particular task as the other two. However, the performance of the SVC and MLP classifiers was similar. Ultimately, the Multi-layer Perceptron classifier performed better on the smaller set of features for which I was optimizing and provided quite stable results compared to the other two. Additionally, the MLP classifier offers a `predict_proba` method, which outputs a likelihood score for each classification. This allowed me to filter out a lot of false positives right out of the gate by simply discarding all predictions with less than 99% likelihood.
 
