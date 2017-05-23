@@ -18,7 +18,7 @@ The above images visualize the HOG descriptor as applied to the 3 channels of a 
 
 ### Dataset
 
-For this project, I used a dataset labeled with vehicle and non-vehicle examples to train my classifier. These images come from a combination of the [GTI vehicle image database](http://www.gti.ssr.upm.es/data/Vehicle_database.html) and the [KITTI vision benchmark suite](http://www.cvlibs.net/datasets/kitti/).
+For this project, I used a labeled dataset with 8,792 "vehicle" and 8,968 "non-vehicle" examples to train my classifier. These images come from a combination of the [GTI vehicle image database](http://www.gti.ssr.upm.es/data/Vehicle_database.html) and the [KITTI vision benchmark suite](http://www.cvlibs.net/datasets/kitti/).
 
 ### Preparing the Data
 
