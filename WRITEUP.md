@@ -105,7 +105,9 @@ Videos are sequences of images, typically with 30 image frames per second, where
 
 ### Drawing Bounding Boxes
 
-OpenCV offers a convenience method `cv2.findContours()` that finds the bounding contours of shapes in an image. Applying this to the heatmap, we can quickly find the outer contours of the "hot" zones int he image. Once these are determined, OpenCV has a second method `cv2.boundingRect()` that will draw a minimal bounding box around a contour. The code for this procedure is found among the helper functions found in cell 5 of the project notebook.
+OpenCV offers a convenience method `cv2.findContours()` that finds the bounding contours of individual shapes in an image. Applying this to the heatmap, we can quickly find the outer contours of the "hot" zones int he image. Once these are determined, OpenCV has a second method `cv2.boundingRect()` that will draw a minimal bounding box around a contour. The code for this procedure is found among the helper functions found in cell 5 of the project notebook.
+
+## Output Videos
 
 ### Considerations for Future Improvements
 
