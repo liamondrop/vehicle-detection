@@ -91,3 +91,6 @@ ENV/
 vehicles*
 non-vehicles*
 non_vehicles*
+
+*.pkl
+input_videos
