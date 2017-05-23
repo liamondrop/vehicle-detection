@@ -78,7 +78,7 @@ orientations  px_per_cell  accuracy  confidence int  num features
 
 As these results were derived from a randomly sampled set of images, there was some variation from one run to the next, so I took the exact ordering of the results with a grain of salt. However, it did tell me that parameters yielding smaller numbers of features could potentially perform as well as those yielding much larger numbers of features. I focused on the parameters that yielded the smaller number of features and tested each of these empirically on the videos to see which gave the best results.
 
-I created a `FeatureExtractor` class that would take the various HOG parameters on instantiation, and make some necessary calculations in order to translate from standard pixel coordinates to the multi-dimensional space of a hog descriptor. This makes it possible to extract the HOG features specific to any given region extracted from an image, as in a sliding window search (see below). The code for this class can be found in the project notebook in the cell labeled **Feature Extractor Class**
+I created a `FeatureExtractor` class that would take the various HOG parameters on instantiation, and make some necessary calculations in order to translate from standard pixel coordinates to the multi-dimensional space of a hog descriptor. This makes it possible to extract the HOG features specific to any given region extracted from an image, as in a sliding window search (see below). The code for this class can be found in the project notebook in the cell labeled [Feature Extractor Class](project_notebook.ipynb#Feature-Extractor-Class)
 
 ### Additional features
 
@@ -90,7 +90,7 @@ Now that we have a good feature descriptor and object classifier, the problem st
 
 In order to overcome this problem, we use a sliding window approach, where windows of varying sizes are moved incrementally across the image, resized to 64x64px, which is the size of the training data, and the classifier makes its prediction on each of these windows.
 
-### Focused Search
+### Narrowed Search Region
 
 Since the region where cars are likely to be found in an image is limited, I limited my search area to only that part of an image most likely to contain cars, i.e. below the horizon line. Also, since cars are likely to be different sizes in the image, depending on where they are located in space relative to the camera, I chose to search regions of varying scales. Below is any image of a number of windows that have all identified a particular region believed to contain a car. Note that this does not show *all* of the sliding windows, only those for the frames where the prediction of "car" was activated.
 
@@ -104,7 +104,7 @@ I implemented this idea by adding 1 to each region of the image predicted by the
 
 ![Heat Maps](./output_images/heat_maps.png)
 
-By setting any region of the image with fewer than some threshold of votes to zero, we eliminate positive predictions that are likely to be outliers. The code for the Sliding Window Search is implemented as a Python class in the project notebook cell labeled **Window Slider Class**.
+By setting any region of the image with fewer than some threshold of votes to zero, we eliminate positive predictions that are likely to be outliers. The code for the Sliding Window Search is implemented as a Python class in the project notebook cell labeled [Window Slider Class](project_notebook.ipynb#Window-Slider-Class).
 
 ### Exploiting the Video Stream
 
