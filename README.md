@@ -6,7 +6,7 @@
 
 ### **Project Overview**
 
-This project contains the results from completing Project 5 of the Udacity Self-Driving Car Engineer Nanodegree.
+This project contains the results from completing Project 5 of the Udacity Self-Driving Car Engineer Nanodegree. The goal of the project is to build an object detector that detects and tracks cars in a video stream. I take advantage of a feature descriptor called a Histogram of Oriented Gradients (HOG), which is a handy way of simplifying and extracting useful features from an image, and combine it with a machine learning classifier, specifically the Multi-layer Perceptron Classifier.
 
 #### Files in the repository
 * The [Project Notebook](project_notebook.ipynb)
